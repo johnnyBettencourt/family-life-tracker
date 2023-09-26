@@ -8,11 +8,11 @@ function App() {
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
 
   return (
-    <div className="App">
+    <div className="App min-h-screen bg-gradient-to-tl from-purple-500 to-purple-200">
       <Header />
       {!isLoggedIn ? (
         // Render your main application content here when the user is logged in
-        <div>
+        <div className='container mx-auto py-40'>
           <LoginPage />
           
           {/* Your main app content */}

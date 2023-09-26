@@ -26,17 +26,30 @@ const LoginForm = () => {
     }
     return(
         <form onSubmit={handleSubmit} className="form">
-            <input
-            type="text"
-            placeholder="username"
-            value={username}
-            onChange={handleUsernameChange}/>
-            <input
-            type="password"
-            placeholder="password"
-            value={password}
-            onChange={handlePasswordChange}/>
-            <button type="submit" className="button primary-button">Submit</button>
+            <div className="">
+                <input
+                    className="border border-grey-400 py-1 px-2 w-full"
+                    type="text"
+                    placeholder="username"
+                    value={username}
+                    onChange={handleUsernameChange}
+                />
+            </div>
+            <div className="mt-5 mb-5">
+                <input
+                    className="border border-grey-400 py-1 px-2 w-full"
+                    type="password"
+                    placeholder="password"
+                    value={password}
+                    onChange={handlePasswordChange}
+                />
+            </div>
+            
+            <button
+                type="submit"
+                className="rounded-full bg-purple-500 py-1 hover:bg-purple-600 px-3 transition duration-300 ease-in-out text-white w-1/2 text-lg">
+                Submit
+            </button>
         </form>
     )
     
