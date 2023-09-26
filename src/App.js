@@ -1,6 +1,7 @@
 
 import './App.css';
 import Header from './components/Header';
+import Dashboard from './features/Dashboard/Dashboard';
 import LoginPage from './pages/LoginPage';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
 
@@ -11,7 +12,7 @@ function App() {
     <div className="App min-h-screen bg-gradient-to-tl from-indigo-600 to-purple-400">
       {!isLoggedIn ? (
         // Render your main application content here when the user is logged in
-        <div className='container mx-auto py-40'>
+        <div className='container mx-auto md:py-40 py-5'>
           <LoginPage />
           
           {/* Your main app content */}
@@ -20,7 +21,10 @@ function App() {
         // Render the login page when the user is not logged in
         <div>
           <Header />
-          <h1>Welcome to Your App</h1>
+          <div className='container mx-auto py-10 bg-white'>
+            <Dashboard />
+          </div>
+          
         </div>
         
       )}
