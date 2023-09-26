@@ -2,7 +2,11 @@ import LoginForm from "../features/login/LoginForm";
 
 const LoginPage = () => {
     return(
-        <LoginForm />
+        <div className="form-container card">
+            <h1>Log-In</h1>
+            <LoginForm />
+        </div>
+        
     )
     
 }

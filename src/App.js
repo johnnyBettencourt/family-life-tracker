@@ -19,7 +19,11 @@ function App() {
         </div>
       ) : (
         // Render the login page when the user is not logged in
-        <h1>Welcome to Your App</h1>
+        <div>
+          
+          <h1>Welcome to Your App</h1>
+        </div>
+        
       )}
     </div>
   )

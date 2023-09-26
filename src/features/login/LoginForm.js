@@ -25,7 +25,7 @@ const LoginForm = () => {
         e.preventDefault();
     }
     return(
-        <form onSubmit={handleSubmit}>
+        <form onSubmit={handleSubmit} className="form">
             <input
             type="text"
             placeholder="username"
@@ -36,7 +36,7 @@ const LoginForm = () => {
             placeholder="password"
             value={password}
             onChange={handlePasswordChange}/>
-            <button type="submit">Submit</button>
+            <button type="submit" className="button primary-button">Submit</button>
         </form>
     )
     
