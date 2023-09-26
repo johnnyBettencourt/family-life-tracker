@@ -6,6 +6,7 @@ const RegistrationForm = () => {
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
     const [confirmPassword, setConfirmPassword] = useState("");
+    const [registrationStatus, setRegistrationStatus] = useState(null);
 
     const dispatch = useDispatch();
 
@@ -28,12 +29,15 @@ const RegistrationForm = () => {
             // For this example, we'll just toggle login state
             dispatch(toggleLogin());
         } else {
-            alert("Passwords do not match.");
+            setRegistrationStatus("Passwords do not match.");
         }
     };
 
     return (
         <form onSubmit={handleSubmit} className="form">
+            {registrationStatus && (
+                        <p className="text-red-500">{registrationStatus}</p>
+                    )}
             <div className="">
                 <input
                     className="border border-grey-400 py-1 px-2 w-full"
