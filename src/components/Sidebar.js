@@ -97,16 +97,18 @@ const Sidebar = () => {
             </div>
             
             {/* Logout Button */}
-            <div className="px-6 py-4 text-lg font-medium text-gray-700 transition-colors duration-300 ease-in-out hover:text-white hover:bg-red-500 rounded-md">
-                <button onClick={handleLogout} className="flex items-center justify-start">
-                    <div className="sidebar__menu__item__icon mr-4 text-xl text-red-500">
-                        <BiLogOut />
+            <Link to="/logout" onClick={handleLogout}>
+                <div className="px-6 py-4 text-lg font-medium text-gray-700 transition-colors duration-300 ease-in-out hover:text-white hover:bg-red-500 rounded-md">
+                    <div className="flex items-center justify-start">
+                        <div className="sidebar__menu__item__icon mr-4 text-xl text-red-500">
+                            <BiLogOut />
+                        </div>
+                        <div className="sidebar__menu__item__text">
+                            Logout
+                        </div>
                     </div>
-                    <div className="sidebar__menu__item__text">
-                        Logout
-                    </div>
-                </button>
-            </div>
+                </div>
+            </Link>
         </div>
     );
 };
