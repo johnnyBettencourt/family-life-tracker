@@ -9,6 +9,7 @@ const LoginForm = () => {
     const [password, setPassword] = useState("");
     const [register, setRegister] = useState(false);
     const [loginStatus, setLoginStatus] = useState(null); // State to track login status
+    const [registerStatus, setRegisterStatus] = useState(null);
 
     const dispatch = useDispatch();
 
@@ -23,23 +24,57 @@ const LoginForm = () => {
     const storeUsername = useSelector((state) => state.login.username);
     const storePassword = useSelector((state) => state.login.password);
 
+    const handleLoginError = (message) => {
+        setLoginStatus(message);
+        setRegisterStatus(null); // Clear registration error
+    };
+
+    const handleRegisterError = (message) => {
+        setRegisterStatus(message);
+        setLoginStatus(null); // Clear login error
+    };
+
+    // useEffect(() => {
+    //     if (!loginStatus && !registerStatus) {
+    //         // Clear error messages after a delay when neither login nor register errors are present
+    //         const timer = setTimeout(() => {
+    //             setLoginStatus(null);
+    //             setRegisterStatus(null);
+    //         }, 1000); // Delay for 1 second
+    //         return () => clearTimeout(timer);
+    //     }
+    // }, [loginStatus, registerStatus]);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        if (username === storeUsername && password === storePassword) {
+        // For this example, I'm using a hardcoded username and password for demonstration purposes.
+        const correctUsername = storeUsername;
+        const correctPassword = storePassword;
+
+        if (username === correctUsername && password === correctPassword) {
+            // Successful login
             dispatch(toggleLogin());
         } else {
-            setLoginStatus("Incorrect username or password. Please try again.");
+            // Unsuccessful login
+            handleLoginError("Incorrect username or password. Please try again.");
         }
     };
 
     return (
-        <div className="form-container">
+        <>
+            <div className={`form-container transition-h duration-500 ease-in-out ${register || loginStatus || registerStatus ? 'max-h-screen' : 'max-h-56 overflow-hidden'}`}>
             {register ? (
                 // Render the registration form if register is true
-                <RegistrationForm />
+                <>
+                    <h2 className="text-3xl mb-4">Sign Up</h2>
+                    <RegistrationForm handleRegisterError={handleRegisterError} registerStatus={registerStatus} />
+                </>
+                
             ) : (
                 // Render the login form if register is false
-                <form onSubmit={handleSubmit} className="form">
+                <>
+                    <h2 className="text-3xl mb-4">Log In</h2>
+                    <form onSubmit={handleSubmit} className="form">
                     {loginStatus && (
                         <p className="text-red-500">{loginStatus}</p>
                     )}
@@ -52,7 +87,7 @@ const LoginForm = () => {
                             onChange={handleUsernameChange}
                         />
                     </div>
-                    <div className="mt-5 mb-5">
+                    <div className="mt-3 mb-3">
                         <input
                             className="border border-grey-400 py-1 px-2 w-full"
                             type="password"
@@ -69,6 +104,8 @@ const LoginForm = () => {
                         Submit
                     </button>
                 </form>
+                </>
+                
             )}
 
             {/* Toggle button to switch between login and registration */}
@@ -79,6 +116,8 @@ const LoginForm = () => {
                 {register ? "Already have an account? Login" : "Don't have an account? Register"}
             </button>
         </div>
+        </>
+        
     );
 };
 
