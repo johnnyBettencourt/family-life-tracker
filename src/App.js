@@ -1,6 +1,6 @@
 
 import './App.css';
-import Sidebar from './components/Nav';
+import Sidebar from './components/Sidebar';
 import Dashboard from './features/Dashboard/Dashboard';
 import LoginPage from './pages/LoginPage';
 import { useSelector } from 'react-redux/es/hooks/useSelector';

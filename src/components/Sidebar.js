@@ -1,6 +1,6 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
-import { BiHome, BiStar, BiCalendar, BiUser, BiReceipt, BiLogOut } from 'react-icons/bi';
+import { BiHome, BiTask, BiCalendar, BiLogOut, BiDollar, BiSolidBabyCarriage } from 'react-icons/bi';
 import { toggleLogin } from '../features/login/loginSlice';
 import { useDispatch } from 'react-redux';
 
@@ -12,10 +12,10 @@ const sidebarNavItems = [
         section: ''
     },
     {
-        display: 'Getting Started',
-        icon: <BiStar />,
-        to: '/started',
-        section: 'started'
+        display: 'Tasks',
+        icon: <BiTask />,
+        to: '/tasks',
+        section: 'tasks'
     },
     {
         display: 'Calendar',
@@ -24,16 +24,16 @@ const sidebarNavItems = [
         section: 'calendar'
     },
     {
-        display: 'User',
-        icon: <BiUser />,
-        to: '/user',
-        section: 'user'
+        display: 'Finances',
+        icon: <BiDollar />,
+        to: '/finances',
+        section: 'finances'
     },
     {
-        display: 'Orders',
-        icon: <BiReceipt />,
-        to: '/order',
-        section: 'order'
+        display: 'Baby',
+        icon: <BiSolidBabyCarriage />,
+        to: '/baby',
+        section: 'baby'
     },
 ]
 
@@ -53,7 +53,6 @@ const Sidebar = () => {
         }, 50);
     }, []);
 
-    // change active index
     useEffect(() => {
         const curPath = window.location.pathname.split('/')[1];
         const activeItem = sidebarNavItems.findIndex(item => item.section === curPath);
@@ -61,7 +60,6 @@ const Sidebar = () => {
     }, [location]);
 
     const handleLogout = () => {
-        // Dispatch the toggleLogin action with payload false to indicate logout
         dispatch(toggleLogin(false));
     };
 
