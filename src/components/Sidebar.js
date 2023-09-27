@@ -1,15 +1,16 @@
 import { useEffect, useRef, useState } from 'react';
-import { Link, useLocation } from 'react-router-dom';
+import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { BiHome, BiTask, BiCalendar, BiLogOut, BiDollar, BiSolidBabyCarriage } from 'react-icons/bi';
 import { toggleLogin } from '../features/login/loginSlice';
 import { useDispatch } from 'react-redux';
+
 
 const sidebarNavItems = [
     {
         display: 'Dashboard',
         icon: <BiHome />,
         to: '/',
-        section: ''
+        section: 'dashboard'
     },
     {
         display: 'Tasks',
@@ -44,6 +45,7 @@ const Sidebar = () => {
     const indicatorRef = useRef();
     const location = useLocation();
     const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
         setTimeout(() => {
@@ -56,11 +58,13 @@ const Sidebar = () => {
     useEffect(() => {
         const curPath = window.location.pathname.split('/')[1];
         const activeItem = sidebarNavItems.findIndex(item => item.section === curPath);
-        setActiveIndex(curPath.length === 0 ? 0 : activeItem);
-    }, [location]);
+        setActiveIndex(prevIndex => curPath.length === 0 ? 0 : activeItem);
+        console.log(activeIndex);
+    }, [location, activeIndex]);
 
     const handleLogout = () => {
         dispatch(toggleLogin(false));
+        navigate('/');
     };
 
     return (
