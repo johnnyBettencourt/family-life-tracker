@@ -1,6 +1,6 @@
 
 import './App.css';
-import Header from './components/Header';
+import Sidebar from './components/Nav';
 import Dashboard from './features/Dashboard/Dashboard';
 import LoginPage from './pages/LoginPage';
 import { useSelector } from 'react-redux/es/hooks/useSelector';
@@ -19,9 +19,9 @@ function App() {
         </div>
       ) : (
         // Render the login page when the user is not logged in
-        <div>
-          <Header />
-          <div className='container mx-auto py-10 bg-white'>
+        <div className='flex'>
+          <Sidebar />
+          <div className='container mx-auto py-10'>
             <Dashboard />
           </div>
           
