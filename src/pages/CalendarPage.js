@@ -1,7 +1,7 @@
 import React from 'react'
 import ComingSoon from '../components/ComingSoon'
 
-export default function FinancesPage() {
+export default function CalendarPage() {
     return (
         <div>
             <ComingSoon />
