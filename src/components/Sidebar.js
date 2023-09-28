@@ -68,7 +68,7 @@ const Sidebar = () => {
     };
 
     return (
-        <div className='fixed top-0 left-0 bottom-0 w-64 bg-white rounded-r-lg shadow-md flex flex-col justify-between'>
+        <div className='flex top-0 left-0 bottom-0 w-64 bg-white rounded-r-lg shadow-md flex-col justify-between h-screen sticky'>
             <div>
                 <div className="sidebar__logo text-center pt-4 text-2xl">
                     Family Hub

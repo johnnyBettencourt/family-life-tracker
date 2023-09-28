@@ -1,10 +1,10 @@
 import React from 'react'
-import ComingSoon from '../components/ComingSoon'
+import Tasks from '../features/Tasks/Tasks'
 
 export default function TasksPage() {
     return (
-        <div>
-            <ComingSoon />
+        <div className='w-full'>
+            <Tasks />
         </div>
     )
 }
