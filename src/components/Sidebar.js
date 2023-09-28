@@ -97,7 +97,7 @@ const Sidebar = () => {
             </div>
             
             {/* Logout Button */}
-            <Link to="/logout" onClick={handleLogout}>
+            <Link to="/" onClick={handleLogout}>
                 <div className="px-6 py-4 text-lg font-medium text-gray-700 transition-colors duration-300 ease-in-out hover:text-white hover:bg-red-500 rounded-md">
                     <div className="flex items-center justify-start">
                         <div className="sidebar__menu__item__icon mr-4 text-xl text-red-500">
