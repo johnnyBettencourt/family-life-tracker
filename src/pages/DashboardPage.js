@@ -6,6 +6,7 @@ export default function DashboardPage() {
         <div>
             <ComingSoon />
             <h1>TEST! I made this change on my PC</h1>
+            <h1>Test I made this change on my mac</h1>
         </div>
     )
 }
