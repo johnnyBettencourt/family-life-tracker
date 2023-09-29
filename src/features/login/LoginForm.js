@@ -62,7 +62,7 @@ const LoginForm = () => {
 
     return (
         <>
-            <div className={`form-container transition-h duration-500 ease-in-out ${register || loginStatus || registerStatus ? 'max-h-screen' : 'max-h-56 overflow-hidden'}`}>
+            <div className={`form-container transition-h duration-500 ease-in-out ${register || loginStatus || registerStatus ? 'max-h-screen' : 'max-h-72 overflow-hidden'}`}>
             {register ? (
                 // Render the registration form if register is true
                 <>
@@ -76,11 +76,11 @@ const LoginForm = () => {
                     <h2 className="text-3xl mb-4">Log In</h2>
                     <form onSubmit={handleSubmit} className="form">
                     {loginStatus && (
-                        <p className="text-red-500">{loginStatus}</p>
+                        <p className="text-red-500 mt-2">{loginStatus}</p>
                     )}
                     <div className="">
                         <input
-                            className="border border-grey-400 py-1 px-2 w-full"
+                            className="border rounded-md py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500"
                             type="text"
                             placeholder="Username"
                             value={username}
@@ -89,7 +89,7 @@ const LoginForm = () => {
                     </div>
                     <div className="mt-3 mb-3">
                         <input
-                            className="border border-grey-400 py-1 px-2 w-full"
+                            className="border rounded-md py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500 mt-3"
                             type="password"
                             placeholder="Password"
                             value={password}
@@ -99,7 +99,7 @@ const LoginForm = () => {
 
                     <button
                         type="submit"
-                        className="rounded-full bg-purple-500 py-1 hover:bg-purple-600 px-3 transition duration-300 ease-in-out text-white w-1/2 text-lg"
+                        className="bg-purple-500 hover:bg-purple-600 text-white font-medium py-2 px-4 rounded-full w-full mt-4"
                     >
                         Submit
                     </button>

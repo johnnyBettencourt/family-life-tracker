@@ -10,11 +10,10 @@ const TaskItem = ({ task, isAdded, setAdded }) => {
     const [isDeleted, setDeleted] = useState(false);
 
     useEffect(() => {
-        // When isAdded is true, trigger the scale-in animation
         if (isAdded) {
             setTimeout(() => {
                 setAdded(false);
-            }, 500); // Adjust the duration to match your transition duration
+            }, 500);
         }
     }, [isAdded, setAdded]);
 
@@ -36,44 +35,44 @@ const TaskItem = ({ task, isAdded, setAdded }) => {
     };
 
     return (
-        <div className={`bg-purple-500 rounded-lg shadow-md p-4 mb-4 transform transition-transform duration-500 ${isDeleted ? 'scale-0' : isEditing ? 'scale-105' : isAdded ? 'scale-0' : 'scale-100'}`}>
+        <div className={`bg-purple-200 rounded-lg shadow-md p-4 mb-4 transform transition-transform duration-500 ${isDeleted ? 'scale-0' : isEditing ? 'scale-105' : isAdded ? 'scale-0' : 'scale-100'}`}>
             <div className="flex justify-between items-center">
                 <div>
                     {isEditing ? (
                         <div>
                             <input
                                 type="text"
-                                className="text-xl font-semibold mb-2 w-full text-gray-700 placeholder-gray-400"
+                                className="text-xl font-semibold mb-2 w-full text-gray-700 placeholder-gray-400 border-b-2 border-purple-500"
                                 value={editedTask.title}
                                 onChange={(e) => setEditedTask({ ...editedTask, title: e.target.value })}
                             />
                             <textarea
-                                className="text-gray-700 placeholder-gray-400 mb-2 w-full"
+                                className="text-gray-700 placeholder-gray-400 mb-2 w-full border-2 border-purple-500"
                                 value={editedTask.description}
                                 onChange={(e) => setEditedTask({ ...editedTask, description: e.target.value })}
                             ></textarea>
                             <input
-                                type="text"
-                                className="text-sm mb-2 w-full text-gray-700 placeholder-gray-400"
+                                type="date"
+                                className="text-sm mb-2 w-full text-gray-700 placeholder-gray-400 border-2 border-purple-500"
                                 value={editedTask.dueDate}
                                 onChange={(e) => setEditedTask({ ...editedTask, dueDate: e.target.value })}
                             />
                             <input
                                 type="text"
-                                className="text-sm w-full text-gray-700 placeholder-gray-400"
+                                className="text-sm w-full text-gray-700 placeholder-gray-400 border-2 border-purple-500"
                                 value={editedTask.tags.join(', ')}
                                 onChange={(e) => setEditedTask({ ...editedTask, tags: e.target.value.split(', ') })}
                             />
                         </div>
                     ) : (
                         <div>
-                            <h2 className={`text-xl font-semibold ${task.completed ? 'line-through' : ''} text-gray-100`}>
+                            <h2 className={`text-xl font-semibold ${task.completed ? 'line-through' : ''} text-gray-700`}>
                                 {editedTask.title}
                             </h2>
-                            <p className="text-gray-100">{editedTask.description}</p>
-                            <p className="text-sm text-gray-400">Due Date: {editedTask.dueDate}</p>
+                            <p className="text-gray-700">{editedTask.description}</p>
+                            <p className="text-sm text-gray-500">Due Date: {editedTask.dueDate}</p>
                             {editedTask.tags.length > 0 && (
-                                <p className="text-sm text-gray-400">
+                                <p className="text-sm text-gray-500">
                                     Tag: {editedTask.tags.join(', ')}
                                 </p>
                             )}

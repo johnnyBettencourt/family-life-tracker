@@ -36,11 +36,11 @@ const RegistrationForm = ({ handleRegisterError, registerStatus }) => {
         <>
             <form onSubmit={handleSubmit} className="form">
                 {registerStatus && (
-                            <p className="text-red-500">{registerStatus}</p>
+                            <p className="text-red-500 mt-2">{registerStatus}</p>
                         )}
                 <div className="">
                     <input
-                        className="border border-grey-400 py-1 px-2 w-full"
+                        className="border rounded-md py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500"
                         type="text"
                         placeholder="Username"
                         value={username}
@@ -49,7 +49,7 @@ const RegistrationForm = ({ handleRegisterError, registerStatus }) => {
                 </div>
                 <div className="mt-3 mb-3">
                     <input
-                        className="border border-grey-400 py-1 px-2 w-full"
+                        className="border rounded-md py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500 mt-3"
                         type="password"
                         placeholder="Password"
                         value={password}
@@ -58,7 +58,7 @@ const RegistrationForm = ({ handleRegisterError, registerStatus }) => {
                 </div>
                 <div className="mt-3 mb-3">
                     <input
-                        className="border border-grey-400 py-1 px-2 w-full transition-h ease-in-out duration-500"
+                        className="border rounded-md py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500 mt-3"
                         type="password"
                         placeholder="Confirm Password"
                         value={confirmPassword}
@@ -68,7 +68,7 @@ const RegistrationForm = ({ handleRegisterError, registerStatus }) => {
 
                 <button
                     type="submit"
-                    className="rounded-full bg-purple-500 py-1 hover:bg-purple-600 px-3 transition duration-300 ease-in-out text-white w-1/2 text-lg">
+                    className="bg-purple-500 hover:bg-purple-600 text-white font-medium py-2 px-4 rounded-full w-full mt-4">
                     Register
                 </button>
             </form>

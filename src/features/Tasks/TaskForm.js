@@ -14,12 +14,10 @@ const TaskForm = () => {
     const [showForm, setShowForm] = useState(false);
 
     useEffect(() => {
-        // Use a setTimeout to delay the animation until after the component has rendered
         const timer = setTimeout(() => {
             setShowForm(true);
         }, 10);
 
-        // Clear the animation class after the component unmounts
         return () => clearTimeout(timer);
     }, []);
 
@@ -35,17 +33,14 @@ const TaskForm = () => {
         const { value } = e.target;
         setFormData({
             ...formData,
-            tags: value ? [value] : [], // Convert value to an array or an empty array if no value is selected
+            tags: value ? [value] : [],
         });
     };
 
     const handleSubmit = (e) => {
         e.preventDefault();
         if (formData.title) {
-            // Dispatch the addTask action with the form data
             dispatch(addTask(formData));
-
-            // Clear the form
             setFormData({
                 title: '',
                 description: '',
@@ -56,11 +51,11 @@ const TaskForm = () => {
     };
 
     return (
-        <div className={`bg-purple-500 rounded-lg shadow-md p-4 transform duration-500 ${showForm ? 'scale-100' : 'scale-0'}`}>
-            <h2 className="text-lg font-semibold mb-4 text-gray-100">Add New Task</h2>
+        <div className={`bg-purple-200 rounded-lg shadow-md p-4 transform duration-500 ${showForm ? 'scale-100' : 'scale-0'}`}>
+            <h2 className="text-lg font-semibold mb-4 text-gray-700">Add New Task</h2>
             <form onSubmit={handleSubmit}>
                 <div className="mb-4">
-                    <label htmlFor="title" className="block text-gray-100 mb-2">
+                    <label htmlFor="title" className="block text-gray-700 mb-2">
                         Task Title:
                     </label>
                     <input
@@ -74,7 +69,7 @@ const TaskForm = () => {
                     />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="description" className="block text-gray-100 mb-2">
+                    <label htmlFor="description" className="block text-gray-700 mb-2">
                         Description:
                     </label>
                     <textarea
@@ -86,7 +81,7 @@ const TaskForm = () => {
                     ></textarea>
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="dueDate" className="block text-gray-100 mb-2">
+                    <label htmlFor="dueDate" className="block text-gray-700 mb-2">
                         Due Date:
                     </label>
                     <input
@@ -99,7 +94,7 @@ const TaskForm = () => {
                     />
                 </div>
                 <div className="mb-4">
-                    <label htmlFor="tags" className="block text-gray-100 mb-2">
+                    <label htmlFor="tags" className="block text-gray-700 mb-2">
                         Tags:
                     </label>
                     <input

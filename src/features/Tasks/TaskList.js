@@ -40,7 +40,7 @@ const TaskList = () => {
                 <input
                     type="text"
                     id="tagSearch"
-                    className="w-full px-3 py-2 border rounded-lg text-gray-700 placeholder-gray-400"
+                    className="w-full border rounded-md py-2 px-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
                     value={tagSearch}
                     onChange={handleTagSearchChange}
                     placeholder="Search for tags"
@@ -50,9 +50,7 @@ const TaskList = () => {
             <div className="mb-4 text-center">
                 <button
                     onClick={toggleTaskForm}
-                    className={`bg-purple-500 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-full ${
-                        showTaskForm ? 'bg-red-600 hover:bg-red-800' : ''
-                    }`}
+                    className={`bg-purple-500 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-full ${showTaskForm ? 'bg-red-600 hover:bg-red-800' : ''}`}
                 >
                     {showTaskForm ? <span>&times;</span> : <BiPlus />}
                 </button>
