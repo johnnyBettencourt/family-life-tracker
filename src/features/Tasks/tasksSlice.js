@@ -16,7 +16,7 @@ const initialState = {
             description: "Organize a memorable vacation for the family.",
             completed: false,
             tags: ["travel", "family"],
-            dueDate: "2023-10-15", // Due date in YYYY-MM-DD format
+            dueDate: "2023-09-29", // Due date in YYYY-MM-DD format
         },
         {
             id: 3,
@@ -32,7 +32,7 @@ const initialState = {
             description: "Repair the kitchen faucet to prevent water waste.",
             completed: false,
             tags: ["home", "family"],
-            dueDate: "2023-09-25", // Due date in YYYY-MM-DD format
+            dueDate: "2023-10-01", // Due date in YYYY-MM-DD format
         },
         {
             id: 5,
@@ -40,9 +40,10 @@ const initialState = {
             description: "Assist the children with their school assignments.",
             completed: true,
             tags: ["education", "family"],
-            dueDate: "2023-09-28", // Due date in YYYY-MM-DD format
+            dueDate: "2023-09-29", // Due date in YYYY-MM-DD format
         },
     ],
+    nextId: 6,
 };
 
 const tasksSlice = createSlice({
@@ -50,7 +51,13 @@ const tasksSlice = createSlice({
     initialState,
     reducers: {
         addTask: (state, action) => {
-            state.tasks.unshift(action.payload);
+            const newId = state.nextId++;
+
+            const newTask = {
+                ...action.payload,
+                id: newId,
+            }
+            state.tasks.unshift(newTask);
         },
         updateTask: (state, action) => {
             const { id, title, description, dueDate, completed, tags } = action.payload;
