@@ -42,24 +42,24 @@ const TaskItem = ({ task, isAdded, setAdded }) => {
                         <div>
                             <input
                                 type="text"
-                                className="text-xl font-semibold mb-2 w-full text-gray-700 placeholder-gray-400 border-b-2 border-purple-500"
+                                className="w-full border rounded-md py-2 px-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
                                 value={editedTask.title}
                                 onChange={(e) => setEditedTask({ ...editedTask, title: e.target.value })}
                             />
                             <textarea
-                                className="text-gray-700 placeholder-gray-400 mb-2 w-full border-2 border-purple-500"
+                                className="w-full border rounded-md py-2 px-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 mt-3"
                                 value={editedTask.description}
                                 onChange={(e) => setEditedTask({ ...editedTask, description: e.target.value })}
                             ></textarea>
                             <input
                                 type="date"
-                                className="text-sm mb-2 w-full text-gray-700 placeholder-gray-400 border-2 border-purple-500"
+                                className="w-full border rounded-md py-2 px-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 mt-3"
                                 value={editedTask.dueDate}
                                 onChange={(e) => setEditedTask({ ...editedTask, dueDate: e.target.value })}
                             />
                             <input
                                 type="text"
-                                className="text-sm w-full text-gray-700 placeholder-gray-400 border-2 border-purple-500"
+                                className="w-full border rounded-md py-2 px-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500 mt-3"
                                 value={editedTask.tags.join(', ')}
                                 onChange={(e) => setEditedTask({ ...editedTask, tags: e.target.value.split(', ') })}
                             />
@@ -92,10 +92,10 @@ const TaskItem = ({ task, isAdded, setAdded }) => {
                             <button
                                 onClick={handleToggleCompletion}
                                 className={`mr-2 px-3 py-1 rounded ${
-                                    editedTask.completed ? 'bg-green-500 text-white' : 'bg-gray-300 text-gray-600'
+                                    task.completed ? 'bg-green-500 text-white' : 'bg-gray-300 text-gray-600'
                                 }`}
                             >
-                                {editedTask.completed ? <BiCheckCircle /> : <BiPencil />}
+                                {task.completed ? <BiCheckCircle /> : <BiPencil />}
                             </button>
                             <button
                                 onClick={() => setEditing(true)}
