@@ -11,24 +11,26 @@ import FinancesPage from './pages/FinancesPage';
 import BabyPage from './pages/BabyPage';
 
 function App() {
+  // Check if the user is logged in using Redux state
   const isLoggedIn = useSelector((state) => state.login.isLoggedIn);
 
   return (
     <div className="App min-h-screen bg-gradient-to-tl from-indigo-600 to-purple-400">
-      {!isLoggedIn ? (
+      {!isLoggedIn ? ( // Display the login page if the user is not logged in
         <div className="container mx-auto md:py-40 py-5">
-          <LoginPage />
+          <LoginPage /> {/* Render the LoginPage component */}
         </div>
       ) : (
         <div className="flex">
-          <Sidebar />
+          <Sidebar /> {/* Render the Sidebar component */}
           <div className="flex-grow">
+            {/* Set up routes for different pages */}
             <Routes>
-              <Route path="/" element={<DashboardPage />} />
-              <Route path="/tasks" element={<TasksPage />} />
-              <Route path="/calendar" element={<CalendarPage />} />
-              <Route path="/finances" element={<FinancesPage />} />
-              <Route path="/baby" element={<BabyPage />} />
+              <Route path="/" element={<DashboardPage />} /> {/* Render DashboardPage for the root path */}
+              <Route path="/tasks" element={<TasksPage />} /> {/* Render TasksPage for /tasks path */}
+              <Route path="/calendar" element={<CalendarPage />} /> {/* Render CalendarPage for /calendar path */}
+              <Route path="/finances" element={<FinancesPage />} /> {/* Render FinancesPage for /finances path */}
+              <Route path="/baby" element={<BabyPage />} /> {/* Render BabyPage for /baby path */}
             </Routes>
           </div>
         </div>

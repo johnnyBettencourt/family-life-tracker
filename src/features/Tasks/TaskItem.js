@@ -10,6 +10,7 @@ const TaskItem = ({ task, isAdded, setAdded }) => {
     const [isDeleted, setDeleted] = useState(false);
 
     useEffect(() => {
+        // Reset the 'isAdded' state after a short delay to control animations
         if (isAdded) {
             setTimeout(() => {
                 setAdded(false);
@@ -18,19 +19,25 @@ const TaskItem = ({ task, isAdded, setAdded }) => {
     }, [isAdded, setAdded]);
 
     const handleToggleCompletion = () => {
+        // Dispatch the 'toggleTaskCompletion' action to toggle task completion status
         dispatch(toggleTaskCompletion(task.id));
     };
 
     const handleDeleteTask = () => {
+        // Set 'isDeleted' to trigger the deletion animation
         setDeleted(true);
 
+        // Delete the task after the animation completes
         setTimeout(() => {
             dispatch(deleteTask(task.id));
         }, 500);
     };
 
     const handleSaveEditedTask = () => {
+        // Dispatch the 'updateTask' action with the edited task data
         dispatch(updateTask(editedTask));
+
+        // Exit editing mode
         setEditing(false);
     };
 
@@ -39,6 +46,7 @@ const TaskItem = ({ task, isAdded, setAdded }) => {
             <div className="flex justify-between items-center">
                 <div>
                     {isEditing ? (
+                        // Edit mode: Show input fields for editing task details
                         <div>
                             <input
                                 type="text"
@@ -65,6 +73,7 @@ const TaskItem = ({ task, isAdded, setAdded }) => {
                             />
                         </div>
                     ) : (
+                        // View mode: Display task details
                         <div>
                             <h2 className={`text-xl font-semibold ${task.completed ? 'line-through' : ''} text-gray-700`}>
                                 {editedTask.title}
@@ -81,6 +90,7 @@ const TaskItem = ({ task, isAdded, setAdded }) => {
                 </div>
                 <div className="flex items-center">
                     {isEditing ? (
+                        // Edit mode: Show "Save" button to save changes
                         <button
                             onClick={handleSaveEditedTask}
                             className="mr-2 px-3 py-1 rounded bg-indigo-500 text-white"
@@ -88,6 +98,7 @@ const TaskItem = ({ task, isAdded, setAdded }) => {
                             Save
                         </button>
                     ) : (
+                        // View mode: Show buttons for completing, editing, and deleting tasks
                         <>
                             <button
                                 onClick={handleToggleCompletion}

@@ -34,17 +34,6 @@ const LoginForm = () => {
         setLoginStatus(null); // Clear login error
     };
 
-    // useEffect(() => {
-    //     if (!loginStatus && !registerStatus) {
-    //         // Clear error messages after a delay when neither login nor register errors are present
-    //         const timer = setTimeout(() => {
-    //             setLoginStatus(null);
-    //             setRegisterStatus(null);
-    //         }, 1000); // Delay for 1 second
-    //         return () => clearTimeout(timer);
-    //     }
-    // }, [loginStatus, registerStatus]);
-
     const handleSubmit = (e) => {
         e.preventDefault();
         // For this example, I'm using a hardcoded username and password for demonstration purposes.

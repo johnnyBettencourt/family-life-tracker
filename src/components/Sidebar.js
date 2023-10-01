@@ -1,10 +1,10 @@
 import { useEffect, useRef, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { BiHome, BiTask, BiCalendar, BiLogOut, BiDollar, BiSolidBabyCarriage } from 'react-icons/bi';
-import { toggleLogin } from '../features/login/loginSlice';
+import { toggleLogin } from '../features/login/loginSlice'; // Import the Redux action for user logout
 import { useDispatch } from 'react-redux';
 
-
+// Sidebar navigation items with display names, icons, paths, and sections
 const sidebarNavItems = [
     {
         display: 'Dashboard',
@@ -36,18 +36,19 @@ const sidebarNavItems = [
         to: '/baby',
         section: 'baby'
     },
-]
+];
 
 const Sidebar = () => {
-    const [activeIndex, setActiveIndex] = useState(0);
-    const [stepHeight, setStepHeight] = useState(0);
+    const [activeIndex, setActiveIndex] = useState(0); // State to track the active sidebar item
+    const [stepHeight, setStepHeight] = useState(0); // Height of each sidebar item
     const sidebarRef = useRef();
     const indicatorRef = useRef();
-    const location = useLocation();
-    const dispatch = useDispatch();
-    const navigate = useNavigate();
+    const location = useLocation(); // Get the current URL location
+    const dispatch = useDispatch(); // Access the Redux dispatch function
+    const navigate = useNavigate(); // Navigate to different routes
 
     useEffect(() => {
+        // Delayed calculation of stepHeight after rendering
         setTimeout(() => {
             const sidebarItem = sidebarRef.current.querySelector('.sidebar__menu__item');
             indicatorRef.current.style.height = `${sidebarItem.clientHeight}px`;
@@ -56,14 +57,21 @@ const Sidebar = () => {
     }, []);
 
     useEffect(() => {
+        // Extract the current section from the location
         const curPath = window.location.pathname.split('/')[1];
+
+        // Find the index of the current section in sidebarNavItems
         const activeItem = sidebarNavItems.findIndex(item => item.section === curPath);
-        setActiveIndex(prevIndex => curPath.length === 0 ? 0 : activeItem);
-        console.log(activeIndex);
-    }, [location, activeIndex]);
+
+        // Update the activeIndex based on the current section
+        setActiveIndex(prevIndex => (curPath.length === 0 ? 0 : activeItem));
+    }, [location]);
 
     const handleLogout = () => {
+        // Dispatch the toggleLogin action with payload false to indicate logout
         dispatch(toggleLogin(false));
+
+        // Navigate back to the base URL after logout
         navigate('/');
     };
 

@@ -28,6 +28,7 @@ const RegistrationForm = ({ handleRegisterError, registerStatus }) => {
             // For this example, we'll just toggle login state
             dispatch(toggleLogin());
         } else {
+            // Handle password mismatch error
             handleRegisterError("Passwords do not match.");
         }
     };
@@ -36,8 +37,9 @@ const RegistrationForm = ({ handleRegisterError, registerStatus }) => {
         <>
             <form onSubmit={handleSubmit} className="form">
                 {registerStatus && (
-                            <p className="text-red-500 mt-2">{registerStatus}</p>
-                        )}
+                    // Display registration status or error message
+                    <p className="text-red-500 mt-2">{registerStatus}</p>
+                )}
                 <div className="">
                     <input
                         className="border rounded-md py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500"
@@ -73,7 +75,6 @@ const RegistrationForm = ({ handleRegisterError, registerStatus }) => {
                 </button>
             </form>
         </>
-        
     );
 };
 

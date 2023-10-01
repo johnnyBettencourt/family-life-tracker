@@ -14,14 +14,17 @@ const TaskForm = () => {
     const [showForm, setShowForm] = useState(false);
 
     useEffect(() => {
+        // Delay showing the form with a transition
         const timer = setTimeout(() => {
             setShowForm(true);
         }, 10);
 
+        // Clear the timer to avoid memory leaks
         return () => clearTimeout(timer);
     }, []);
 
     const handleInputChange = (e) => {
+        // Update the form data when input fields change
         const { name, value } = e.target;
         setFormData({
             ...formData,
@@ -30,6 +33,7 @@ const TaskForm = () => {
     };
 
     const handleTagChange = (e) => {
+        // Update the form data for tags input
         const { value } = e.target;
         setFormData({
             ...formData,
@@ -40,7 +44,9 @@ const TaskForm = () => {
     const handleSubmit = (e) => {
         e.preventDefault();
         if (formData.title) {
+            // Dispatch the 'addTask' action with the form data
             dispatch(addTask(formData));
+            // Clear the form data after submitting
             setFormData({
                 title: '',
                 description: '',
@@ -64,7 +70,7 @@ const TaskForm = () => {
                         name="title"
                         value={formData.title}
                         onChange={handleInputChange}
-                        className="w-full px-3 py-2 border rounded-lg  text-gray-700"
+                        className="w-full px-3 py-2 border rounded-lg text-gray-700"
                         required
                     />
                 </div>

@@ -1,20 +1,21 @@
 import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
-    isLoggedIn: false,
-    username: 'test',
-    password: 'test'
+    isLoggedIn: false,  // Initial login state is set to false
+    username: 'test',  // Default username
+    password: 'test'   // Default password
 }
 
 export const loginSlice = createSlice({
-    name: 'login',
-    initialState,
+    name: 'login', // Name of the slice
+    initialState, // Initial state
     reducers: {
         toggleLogin: (state) => {
+            // This action toggles the login state between true and false
             state.isLoggedIn = !state.isLoggedIn;
-        }
+        },
     }
 });
 
-export const loginReducer = loginSlice.reducer;
-export const { toggleLogin, submitLogin } = loginSlice.actions;
+export const loginReducer = loginSlice.reducer; // Export the reducer
+export const { toggleLogin } = loginSlice.actions; // Export the actions
