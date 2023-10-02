@@ -1,70 +1,57 @@
-# Getting Started with Create React App
+# Family Hub (Work in Progress)
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Family Hub is a web application that helps you manage and organize your family's tasks, events, and important information in one central place. Keep track of to-dos, family events, finances, and more with this family-oriented hub.
 
-## Available Scripts
+## Features
 
-In the project directory, you can run:
+- **Task Management**: Add, update, and delete tasks. Mark tasks as completed and organize them by tags.
+- **Event Calendar**: Keep track of family events, birthdays, and anniversaries with an interactive calendar.
+- **Finances**: Manage family finances by tracking expenses, income, and budgeting.
+- **Baby Care**: Record and monitor baby-related activities, such as feeding, diaper changes, and sleep patterns.
 
-### `npm start`
+## Technologies Used
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in your browser.
+- **React**: A JavaScript library for building user interfaces.
+- **Redux**: A state management library for predictable state updates.
+- **React Router**: A library for handling routing in a single-page application.
+- **Node.js**: A JavaScript runtime environment for server-side development.
+- **Express**: A web application framework for building APIs and server-side applications.
+- **MongoDB**: A NoSQL database for storing application data.
 
-The page will reload when you make changes.\
-You may also see any lint errors in the console.
+## Getting Started
 
-### `npm test`
+1. Clone the repository: `git clone https://github.com/your-username/family-hub.git`
+2. Navigate to the project folder: `cd family-hub`
+3. Install the dependencies: `npm install`
+4. Create a `.env` file in the server directory and set up your environment variables, including database connection details and secret keys.
+5. Start the server: `npm run server`
+6. In a separate terminal, start the client: `npm start`
+7. Open your browser and navigate to `http://localhost:3000`
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+Note: You may need to set up a MongoDB database and update your `.env` file with the database URI.
 
-### `npm run build`
+## Usage
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+1. **Task Management**:
+   - Click on the "Tasks" tab to manage tasks.
+   - Add new tasks, update task details, mark tasks as completed, and delete tasks.
+   - Filter tasks by tags or search for tasks by keyword.
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+2. **Event Calendar**:
+   - Go to the "Calendar" tab to view and manage family events.
+   - Add new events, edit event details, and delete events.
+   - Navigate through months to see upcoming events.
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+3. **Finances**:
+   - Access the "Finances" tab to track family finances.
+   - Record income and expenses, categorize transactions, and set budget goals.
+   - View financial reports and summaries.
 
-### `npm run eject`
+4. **Baby Care**:
+   - Visit the "Baby" tab to log and monitor baby-related activities.
+   - Record feeding times, diaper changes, and sleep patterns.
+   - Track your baby's growth and development milestones.
 
-**Note: this is a one-way operation. Once you `eject`, you can't go back!**
+## Contributing
 
-If you aren't satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
-
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you're on your own.
-
-You don't have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn't feel obligated to use this feature. However we understand that this tool wouldn't be useful if you couldn't customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
+Contributions are welcome! If you find any bugs or have suggestions for improvements, please open an issue or submit a pull request.
