@@ -115,12 +115,12 @@ const TaskForm = () => {
                 </div>
 
                 <div className="text-right">
-                    <button
-                        type="submit"
-                        className="px-4 py-2 bg-indigo-500 text-white rounded-lg hover:bg-indigo-700"
-                    >
-                        Add Task
-                    </button>
+                <button
+    type="submit"
+    className="px-4 py-2 bg-purple-600 hover:bg-purple-700 text-white rounded-lg shadow transition-colors duration-300"
+>
+    Add Task
+</button>
                 </div>
             </form>
         </div>

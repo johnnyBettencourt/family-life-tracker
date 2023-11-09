@@ -3,7 +3,7 @@ import TaskItem from './TaskItem';
 import TaskForm from './TaskForm';
 import { useSelector, useDispatch } from 'react-redux';
 import { selectTasks, addTask } from './tasksSlice';
-import { BiPlus } from 'react-icons/bi';
+import { BiPlus, BiX } from 'react-icons/bi';
 
 const TaskList = () => {
     const dispatch = useDispatch(); // Initializing the Redux dispatch function
@@ -34,33 +34,31 @@ const TaskList = () => {
     };
 
     return (
-        <div>
-            <h1 className="text-2xl font-semibold mb-4 text-grey-900">To-Do</h1>
+        <div className="p-4 md:p-6 bg-white rounded-lg shadow">
+        <h1 className="text-3xl font-bold text-gray-800 mb-6">Your Tasks</h1>
 
-            {/* Tag search input */}
-            <div className="mb-4">
-                <label htmlFor="tagSearch" className="block text-gray-900 mb-2">
-                    Search by Tag:
-                </label>
-                <input
-                    type="text"
-                    id="tagSearch"
-                    className="w-full border rounded-md py-2 px-3 text-gray-700 placeholder-gray-400 focus:outline-none focus:ring-2 focus:ring-purple-500"
-                    value={tagSearch}
-                    onChange={handleTagSearchChange}
-                    placeholder="Search for tags"
-                />
-            </div>
+        <div className="mb-6">
+            <label htmlFor="tagSearch" className="block text-gray-800 text-sm font-medium mb-2">
+                Search by Tag:
+            </label>
+            <input
+                type="text"
+                id="tagSearch"
+                className="form-input w-full border-gray-300 rounded-md shadow-sm transition ease-in-out duration-150 focus:border-purple-500 focus:ring focus:ring-opacity-50 focus:ring-purple-500"
+                value={tagSearch}
+                onChange={handleTagSearchChange}
+                placeholder="Type a tag to search..."
+            />
+        </div>
 
-            {/* Button to toggle task form */}
-            <div className="mb-4 text-center">
-                <button
-                    onClick={toggleTaskForm}
-                    className={`bg-purple-500 hover:bg-purple-700 text-white font-semibold py-2 px-4 rounded-full ${showTaskForm ? 'bg-red-600 hover:bg-red-800' : ''}`}
-                >
-                    {showTaskForm ? <span>&times;</span> : <BiPlus />} {/* Icon for add or close */}
-                </button>
-            </div>
+        <div className="mb-6 text-right">
+            <button
+                onClick={toggleTaskForm}
+                className={`inline-flex items-center justify-center w-10 h-10 bg-purple-500 hover:bg-purple-700 text-white rounded-full transition duration-300 ease-in-out focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-purple-500 ${showTaskForm ? 'bg-red-500 hover:bg-red-700' : ''}`}
+            >
+                {showTaskForm ? <BiX size="24" /> : <BiPlus size="24" />}
+            </button>
+        </div>
 
             {/* Task form (if showTaskForm is true) */}
             {showTaskForm && (

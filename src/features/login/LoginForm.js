@@ -49,64 +49,54 @@ const LoginForm = () => {
         }
     };
 
-    return (
+     return (
         <>
-            <div className={`form-container transition-h duration-500 ease-in-out ${register || loginStatus || registerStatus ? 'max-h-screen' : 'max-h-72 overflow-hidden'}`}>
-            {register ? (
-                // Render the registration form if register is true
-                <>
-                    <h2 className="text-3xl mb-4">Sign Up</h2>
-                    <RegistrationForm handleRegisterError={handleRegisterError} registerStatus={registerStatus} />
-                </>
-                
-            ) : (
-                // Render the login form if register is false
-                <>
-                    <h2 className="text-3xl mb-4">Log In</h2>
-                    <form onSubmit={handleSubmit} className="form">
-                    {loginStatus && (
-                        <p className="text-red-500 mt-2">{loginStatus}</p>
-                    )}
-                    <div className="">
-                        <input
-                            className="border rounded-md py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500"
-                            type="text"
-                            placeholder="Username"
-                            value={username}
-                            onChange={handleUsernameChange}
-                        />
-                    </div>
-                    <div className="mt-3 mb-3">
-                        <input
-                            className="border rounded-md py-2 px-3 w-full focus:outline-none focus:ring-2 focus:ring-purple-500 mt-3"
-                            type="password"
-                            placeholder="Password"
-                            value={password}
-                            onChange={handlePasswordChange}
-                        />
-                    </div>
+            <div className={`transition-all ease-in-out duration-500 ${register || loginStatus || registerStatus ? 'max-h-screen' : 'max-h-72 overflow-hidden'}`}>
+                {register ? (
+                    <>
+                        <h2 className="text-3xl font-medium mb-4 text-gray-700">Sign Up</h2>
+                        <RegistrationForm handleRegisterError={handleRegisterError} registerStatus={registerStatus} />
+                    </>
+                ) : (
+                    <>
+                        <h2 className="text-3xl font-medium mb-4 text-gray-700">Log In</h2>
+                        <form onSubmit={handleSubmit} className="space-y-4">
+                            {loginStatus && (
+                                <p className="text-red-500 text-sm my-2">{loginStatus}</p>
+                            )}
+                            <input
+                                className="border border-gray-300 rounded-lg py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-purple-300"
+                                type="text"
+                                placeholder="Username"
+                                value={username}
+                                onChange={handleUsernameChange}
+                            />
+                            <input
+                                className="border border-gray-300 rounded-lg py-2 px-4 w-full focus:outline-none focus:ring-2 focus:ring-purple-300"
+                                type="password"
+                                placeholder="Password"
+                                value={password}
+                                onChange={handlePasswordChange}
+                            />
+                            <button
+                                type="submit"
+                                className="bg-purple-500 hover:bg-purple-600 text-white font-medium py-2 px-4 rounded-full w-full transition-colors duration-200"
+                            >
+                                Submit
+                            </button>
+                        </form>
+                    </>
+                )}
 
-                    <button
-                        type="submit"
-                        className="bg-purple-500 hover:bg-purple-600 text-white font-medium py-2 px-4 rounded-full w-full mt-4"
-                    >
-                        Submit
-                    </button>
-                </form>
-                </>
-                
-            )}
-
-            {/* Toggle button to switch between login and registration */}
-            <button
-                onClick={() => setRegister(!register)}
-                className="mt-3 text-blue-500 hover:underline cursor-pointer"
-            >
-                {register ? "Already have an account? Login" : "Don't have an account? Register"}
-            </button>
-        </div>
+                {/* Toggle button to switch between login and registration */}
+                <button
+                    onClick={() => setRegister(!register)}
+                    className="text-md text-blue-500 hover:text-blue-600 transition-colors duration-200 mt-4"
+                >
+                    {register ? "Already have an account? Log In" : "Don't have an account? Sign Up"}
+                </button>
+            </div>
         </>
-        
     );
 };
 

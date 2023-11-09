@@ -39,60 +39,33 @@ const sidebarNavItems = [
 ];
 
 const Sidebar = () => {
-    const [activeIndex, setActiveIndex] = useState(0); // State to track the active sidebar item
-    const [stepHeight, setStepHeight] = useState(0); // Height of each sidebar item
-    const sidebarRef = useRef();
-    const indicatorRef = useRef();
-    const location = useLocation(); // Get the current URL location
-    const dispatch = useDispatch(); // Access the Redux dispatch function
-    const navigate = useNavigate(); // Navigate to different routes
+    const [activeIndex, setActiveIndex] = useState(0);
+    const location = useLocation();
+    const dispatch = useDispatch();
+    const navigate = useNavigate();
 
     useEffect(() => {
-        // Delayed calculation of stepHeight after rendering
-        setTimeout(() => {
-            const sidebarItem = sidebarRef.current.querySelector('.sidebar__menu__item');
-            indicatorRef.current.style.height = `${sidebarItem.clientHeight}px`;
-            setStepHeight(sidebarItem.clientHeight);
-        }, 50);
-    }, []);
-
-    useEffect(() => {
-        // Extract the current section from the location
-        const curPath = window.location.pathname.split('/')[1];
-
-        // Find the index of the current section in sidebarNavItems
+        const curPath = location.pathname.split('/')[1];
         const activeItem = sidebarNavItems.findIndex(item => item.section === curPath);
-
-        // Update the activeIndex based on the current section
-        setActiveIndex(prevIndex => (curPath.length === 0 ? 0 : activeItem));
+        setActiveIndex(activeItem !== -1 ? activeItem : 0);
     }, [location]);
 
     const handleLogout = () => {
-        // Dispatch the toggleLogin action with payload false to indicate logout
         dispatch(toggleLogin(false));
-
-        // Navigate back to the base URL after logout
         navigate('/');
     };
 
     return (
-        <div className='flex top-0 left-0 bottom-0 w-64 bg-white rounded-r-lg shadow-md flex-col justify-between h-screen sticky'>
+        <div className='flex flex-col top-0 left-0 bottom-0 w-64 bg-gray-50 rounded-r-lg shadow-lg justify-between h-screen sticky'>
             <div>
-                <div className="sidebar__logo text-center pt-4 text-2xl">
+                <div className="sidebar__logo text-center pt-6 pb-4 text-2xl font-bold text-purple-600">
                     Family Hub
                 </div>
-                <div ref={sidebarRef} className="sidebar__menu">
-                    <div
-                        ref={indicatorRef}
-                        className="sidebar__menu__indicator"
-                        style={{
-                            transform: `translateX(-50%) translateY(${activeIndex * stepHeight}px)`
-                        }}
-                    ></div>
+                <div className="sidebar__menu">
                     {sidebarNavItems.map((item, index) => (
                         <Link to={item.to} key={index}>
-                            <div className={`sidebar__menu__item ${activeIndex === index ? 'active' : ''} flex items-center justify-start px-4 py-3 text-lg font-medium text-gray-700 transition-colors duration-300 ease-in-out hover:text-white hover:bg-purple-300 ${activeIndex === index ? 'bg-purple-300 text-white' : ''} rounded-md`}>
-                                <div className="sidebar__menu__item__icon mr-3 text-xl">
+                            <div className={`sidebar__menu__item flex items-center px-4 py-3 text-lg font-medium transition-all duration-300 ease-in-out hover:bg-purple-100 rounded-md ${activeIndex === index ? 'bg-purple-200 text-purple-700' : 'text-gray-700'}`}>
+                                <div className="sidebar__menu__item__icon mr-3 text-2xl">
                                     {item.icon}
                                 </div>
                                 <div className="sidebar__menu__item__text">
@@ -104,15 +77,18 @@ const Sidebar = () => {
                 </div>
             </div>
 
-            {/* Logout Button */}
-            <Link to="/" onClick={handleLogout}>
-                <div className="sidebar__menu__item flex items-center justify-start px-4 py-3 text-lg font-medium text-gray-700 transition-colors duration-300 ease-in-out hover:text-white hover:bg-red-500 rounded-md">
-                    <div className="sidebar__menu__item__icon mr-3 text-xl text-red-500">
-                        <BiLogOut />
+            <div className="mb-4">
+                <Link to="/" onClick={handleLogout}>
+                    <div className="sidebar__menu__item flex items-center justify-start px-4 py-3 text-lg font-medium text-gray-700 transition-colors duration-300 ease-in-out hover:text-white hover:bg-red-500 rounded-md">
+                        <div className="sidebar__menu__item__icon mr-3 text-xl text-red-500">
+                            <BiLogOut />
+                        </div>
+                        <div className="sidebar__menu__item__text">
+                            Logout
+                        </div>
                     </div>
-                    <div className="sidebar__menu__item__text">Logout</div>
-                </div>
-            </Link>
+                </Link>
+            </div>
         </div>
     );
 };
