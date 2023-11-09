@@ -1,4 +1,4 @@
-import { useEffect, useRef, useState } from 'react';
+import { useEffect, useState } from 'react';
 import { Link, useLocation, useNavigate } from 'react-router-dom';
 import { BiHome, BiTask, BiCalendar, BiLogOut, BiDollar, BiSolidBabyCarriage } from 'react-icons/bi';
 import { toggleLogin } from '../features/login/loginSlice'; // Import the Redux action for user logout
