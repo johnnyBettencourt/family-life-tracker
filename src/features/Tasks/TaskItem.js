@@ -40,6 +40,10 @@ const TaskItem = ({ task, isAdded, setAdded }) => {
         // Exit editing mode
         setEditing(false);
     };
+    const formatDate = (dateString) => {
+        const options = { year: 'numeric', month: 'long', day: 'numeric' };
+        return new Date(dateString).toLocaleDateString('en-US', options);
+    }
 
     return (
         <div className={`bg-white rounded-lg shadow-lg p-4 mb-4 transition-all duration-500 ease-in-out border-2 border-gray-100 hover:shadow-xl ${isDeleted ? 'opacity-0 scale-95' : isEditing ? 'scale-105' : 'scale-100'}`}>
@@ -82,7 +86,7 @@ const TaskItem = ({ task, isAdded, setAdded }) => {
                                 {task.title}
                             </h2>
                             <p className="text-gray-600">{task.description}</p>
-                            <p className="text-sm text-gray-500 mb-2">Due: {task.dueDate}</p>
+                            <p className="text-sm text-gray-500 mb-2">Due: {formatDate(task.dueDate)}</p>
                             <div className="flex flex-wrap gap-2">
                                 {task.tags.map((tag, index) => (
                                     <span key={index} className="bg-purple-200 text-purple-700 text-xs font-semibold mr-2 px-2.5 py-0.5 rounded">
