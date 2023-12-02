@@ -1,13 +1,14 @@
 .fc-event {
-    background-color: #C4B5FD !important;
+    background-color: #8B5CF6 !important;
+    color: white !important;
     /* Replace with your app's secondary color */
 }
 
 .fc-button {
     background-color: #8B5CF6 !important;
     border-color: #8B5CF6 !important;
-    border-radius: 8px !important;
-    margin: .5rem !important;
+    border-radius: .5rem !important;
+    margin: .1rem !important;
 }
 
 .fc-button:hover {

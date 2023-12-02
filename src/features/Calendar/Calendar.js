@@ -5,6 +5,7 @@ import listPlugin from '@fullcalendar/list';
 import { useSelector } from 'react-redux';
 import { selectEvents } from './calendarSlice';
 import './calendar.css';
+import EventForm from './EventForm';
 
 export default function Calendar() {
     // Fetch events from Redux store
@@ -22,6 +23,10 @@ export default function Calendar() {
                 </div>
             </div>
             <div className='w-1/4 h-full m-1'>
+                
+                <div className='mb-2'>
+                    <EventForm />
+                </div>
                 <div className='p-4 bg-white rounded-lg shadow'>
                     <FullCalendar
                         plugins={[listPlugin]}
