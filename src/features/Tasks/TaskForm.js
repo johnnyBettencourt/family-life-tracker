@@ -34,10 +34,9 @@ const TaskForm = () => {
 
     const handleTagChange = (e) => {
         // Update the form data for tags input
-        const { value } = e.target;
         setFormData({
             ...formData,
-            tags: value ? [value] : [],
+            tags: e.target.value.split(', '),
         });
     };
 
