@@ -32,10 +32,10 @@ const EventForm = () => {
 
     return (
         <div className="bg-white rounded-lg shadow-md p-4">
-            <h2 className="text-lg font-semibold mb-4 text-gray-700">Add New Event</h2>
+            <h2 className="text-lg font-semibold mb-2 text-gray-700">Add New Event</h2>
             <form onSubmit={handleSubmit}>
-                <div className="mb-4">
-                    <label htmlFor="title" className="block text-gray-700 mb-2">
+                <div className="mb-2">
+                    <label htmlFor="title" className="block text-gray-700 mb-1">
                         Event Title:
                     </label>
                     <input
@@ -48,7 +48,7 @@ const EventForm = () => {
                         required
                     />
                 </div>
-                <div className="mb-4">
+                <div className="mb-1">
                     <label htmlFor="startDate" className="block text-gray-700 mb-2">
                         Start Date:
                     </label>
@@ -61,8 +61,8 @@ const EventForm = () => {
                         required
                     />
                 </div>
-                <div className="mb-4">
-                    <label htmlFor="endDate" className="block text-gray-700 mb-2">
+                <div className="mb-2">
+                    <label htmlFor="endDate" className="block text-gray-700 mb-1">
                         End Date:
                     </label>
                     <input
@@ -74,7 +74,7 @@ const EventForm = () => {
                         required
                     />
                 </div>
-                <div className="mb-4 flex items-center">
+                <div className="mb-2 flex items-center">
                     <label htmlFor="allDay" className="block text-gray-700 mr-2">
                         All Day Event:
                     </label>
