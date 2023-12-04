@@ -13,7 +13,6 @@ const EventForm = () => {
         e.preventDefault();
         // Create the event object
         const event = {
-            id: Date.now(), // simple unique ID generation
             title,
             start: startDate,
             end: endDate,

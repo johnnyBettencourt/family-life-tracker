@@ -37,7 +37,7 @@ const initialState = {
             allDay: true
         }
     ],
-    // nextId: 6,
+    nextId: 6,
 };
 
 const calendarSlice = createSlice({
