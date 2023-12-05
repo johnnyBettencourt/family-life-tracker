@@ -1,10 +1,10 @@
 import React from 'react'
-import ComingSoon from '../components/ComingSoon'
+import Calendar from '../features/Calendar/Calendar'
 
 export default function CalendarPage() {
     return (
         <div>
-            <ComingSoon />
+            <Calendar />
         </div>
     )
 }

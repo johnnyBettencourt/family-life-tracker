@@ -1,0 +1,26 @@
+.fc-event {
+    background-color: #8B5CF6 !important;
+    color: white !important;
+    /* Replace with your app's secondary color */
+}
+
+.fc-button {
+    background-color: #8B5CF6 !important;
+    border-color: #8B5CF6 !important;
+    border-radius: .5rem !important;
+    margin: .1rem !important;
+}
+
+.fc-button:hover {
+    background-color: #6B21A8 !important;
+}
+
+.fc-event {
+    border-radius: .5rem !important;
+    /* Rounded corners for events */
+    /* Add more styling as per your app's theme */
+}
+
+.fc-day-today {
+    background-color: #efe9ff !important;
+}

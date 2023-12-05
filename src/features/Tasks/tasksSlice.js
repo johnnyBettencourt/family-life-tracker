@@ -81,6 +81,7 @@ const tasksSlice = createSlice({
                 existingTask.completed = completed;
                 existingTask.tags = tags;
             }
+            
         },
         deleteTask: (state, action) => {
             // Extract the payload (task ID) to be deleted
