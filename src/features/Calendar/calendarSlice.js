@@ -79,4 +79,4 @@ const calendarSlice = createSlice({
 
 export const selectEvents = (state) => state.calendar.events;
 export const calendarReducer = calendarSlice.reducer;
-export const { addEvent, removeEvent, updateEvent } = calendarSlice.actions;
+export const { addEvent, deleteEvent, updateEvent } = calendarSlice.actions;

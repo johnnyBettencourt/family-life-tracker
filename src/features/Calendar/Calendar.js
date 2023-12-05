@@ -4,7 +4,7 @@ import dayGridPlugin from '@fullcalendar/daygrid';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import interactionPlugin from '@fullcalendar/interaction';
 import { useSelector, useDispatch } from 'react-redux';
-import { selectEvents, updateEvent } from './calendarSlice';
+import { selectEvents, updateEvent, deleteEvent } from './calendarSlice';
 import './calendar.css';
 import EventForm from './EventForm';
 
@@ -40,6 +40,12 @@ export default function Calendar() {
         return adjustedDate.toISOString().slice(0, 19); // Removes the 'Z' and milliseconds
     }
 
+    const handleEventClick = ({ event }) => {
+        if (window.confirm(`Are you sure you want to delete the event '${event.title}'?`)) {
+            dispatch(deleteEvent({ id: Number(event.id) }));
+        }
+    };
+
     return (
         <div className="flex m-4">
             <div className='w-3/4 h-3/4 m-1'>
@@ -50,6 +56,7 @@ export default function Calendar() {
                         events={events}
                         editable={true}
                         eventDrop={handleEventDrop}
+                        eventClick={handleEventClick}
                     />
                 </div>
             </div>
