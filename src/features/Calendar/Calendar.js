@@ -14,31 +14,18 @@ export default function Calendar() {
     const dispatch = useDispatch();
 
     const handleEventDrop = (info) => {
-        console.log(events);
         const { event } = info;
-        const adjustedStart = toLocalISOString(event.start);
-        const adjustedEnd = toLocalISOString(event.end);
-
-        console.log(event.id);
     
         const updatedEvent = {
             id: Number(event.id),
             title: event.title,
-            start: adjustedStart,
-            end: adjustedEnd,
+            start: event.start,
+            end: event.end,
             allDay: event.allDay
         };
     
         dispatch(updateEvent(updatedEvent));
-        console.log(events)
     };
-    
-    // Function to convert date to local ISO string
-    function toLocalISOString(date) {
-        const offset = date.getTimezoneOffset() * 60000; // offset in milliseconds
-        const adjustedDate = new Date(date.getTime() - offset);
-        return adjustedDate.toISOString().slice(0, 19); // Removes the 'Z' and milliseconds
-    }
 
     const handleEventClick = ({ event }) => {
         if (window.confirm(`Are you sure you want to delete the event '${event.title}'?`)) {

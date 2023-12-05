@@ -45,7 +45,6 @@ const calendarSlice = createSlice({
     initialState,
     reducers: {
         addEvent: (state, action) => {
-            console.log(JSON.parse(JSON.stringify(state.events)));
             const newId = state.nextId++;
 
             const newEvent = {
@@ -53,7 +52,6 @@ const calendarSlice = createSlice({
                 id: newId,
             };
             state.events.push(newEvent);
-            console.log(JSON.parse(JSON.stringify(state.events)));
         },
         updateEvent: (state, action) => {
             const { id, title, start, end, allDay } = action.payload;
@@ -68,8 +66,6 @@ const calendarSlice = createSlice({
                 existingEvent.end = end;
                 existingEvent.allDay = allDay;
             }
-            // console.log(JSON.parse(JSON.stringify(state.events)))
-            // console.log(action.payload)
         },
         deleteEvent: (state, action) => {
             state.events = state.events.filter(event => event.id !== action.payload.id);
