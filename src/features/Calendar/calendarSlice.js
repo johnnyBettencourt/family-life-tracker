@@ -5,35 +5,35 @@ const initialState = {
         {
             id: 1,
             title: 'Family Brunch',
-            start: '2023-12-01T10:30:00',
-            end: '2023-12-01T12:00:00',
+            start: new Date().getFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + '-01T10:30:00',
+            end: new Date().getFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + '-01T12:00:00',
             allDay: false
         },
         {
             id: 2,
             title: 'Doctor Appointment',
-            start: '2023-12-03',
+            start: new Date().getFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + '-03',
             allDay: true
         },
         {
             id: 3,
             title: 'School Play',
-            start: '2023-12-05T18:00:00',
-            end: '2023-12-05T20:00:00',
+            start: new Date().getFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + '-05T18:00:00',
+            end: new Date().getFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + '-05T20:00:00',
             allDay: false
         },
         {
             id: 4,
             title: 'Grocery Shopping',
-            start: '2023-12-07T09:00:00',
-            end: '2023-12-07T10:00:00',
+            start: new Date().getFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + '-07T09:00:00',
+            end: new Date().getFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + '-07T10:00:00',
             allDay: false
         },
         {
             id: 5,
             title: 'Weekend Getaway',
-            start: '2023-12-10',
-            end: '2023-12-12',
+            start: new Date().getFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + '-10',
+            end: new Date().getFullYear() + '-' + (new Date().getMonth() + 1).toString().padStart(2, '0') + '-12',
             allDay: true
         }
     ],
