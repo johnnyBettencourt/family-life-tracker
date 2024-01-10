@@ -1,15 +1,22 @@
-import React from 'react';
+import React, { useState } from 'react';
 import FullCalendar from '@fullcalendar/react';
 import dayGridPlugin from '@fullcalendar/daygrid';
 import listPlugin from '@fullcalendar/list';
 import { useSelector } from 'react-redux';
 import { selectEvents } from './calendarSlice';
-import './calendar.css';
 import EventForm from './EventForm';
+import './calendar.css'
 
-export default function Calendar() {
-    // Fetch events from Redux store
+const Calendar = () => {
     const events = useSelector(selectEvents);
+    const [selectedEvent, setSelectedEvent] = useState(null);
+
+    const handleEventClick = (info) => {
+        setSelectedEvent(info.event);
+    };
+    const handleUnselect = () => {
+        setSelectedEvent(null);
+    };
 
     return (
         <div className="flex m-4">
@@ -18,23 +25,27 @@ export default function Calendar() {
                     <FullCalendar
                         plugins={[dayGridPlugin]}
                         initialView='dayGridMonth'
-                        events={events} // Pass the events to FullCalendar
+                        events={events}
+                        eventClick={handleEventClick}
+                        unselect={handleUnselect}
                     />
                 </div>
             </div>
             <div className='w-1/4 h-full m-1'>
-                
                 <div className='mb-2'>
-                    <EventForm />
+                    <EventForm event={selectedEvent} />
                 </div>
                 <div className='p-4 bg-white rounded-lg shadow'>
                     <FullCalendar
                         plugins={[listPlugin]}
                         initialView='listWeek'
-                        events={events} // Pass the events to FullCalendar
+                        events={events}
+                        eventClick={handleEventClick}
                     />
                 </div>
             </div>
         </div>
     );
-}
+};
+
+export default Calendar;

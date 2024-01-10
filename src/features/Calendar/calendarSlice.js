@@ -56,10 +56,16 @@ const calendarSlice = createSlice({
         },
         removeEvent: (state, action) => {
             state.events = state.events.filter(event => event.id !== action.payload.id);
+        },
+        editEvent: (state, action) => {
+            const event = state.events.find(event => event.id === action.payload.id);
+            if (event) {
+                Object.assign(event, action.payload);
+            }
         }
     }
 })
 
 export const selectEvents = (state) => state.calendar.events;
 export const calendarReducer = calendarSlice.reducer;
-export const { addEvent, removeEvent } = calendarSlice.actions;
+export const { addEvent, removeEvent, editEvent } = calendarSlice.actions;

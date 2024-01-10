@@ -1,33 +1,58 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addEvent } from './calendarSlice';
+import { addEvent, editEvent } from './calendarSlice';
 
-const EventForm = () => {
+function formatDateToInput(date) {
+    const formattedDate = new Date(date);
+    const year = formattedDate.getFullYear();
+    const month = (formattedDate.getMonth() + 1).toString().padStart(2, '0');
+    const day = formattedDate.getDate().toString().padStart(2, '0');
+    const hours = formattedDate.getHours().toString().padStart(2, '0');
+    const minutes = formattedDate.getMinutes().toString().padStart(2, '0');
+    return `${year}-${month}-${day}T${hours}:${minutes}`;
+}
+
+const EventForm = ({ event = null }) => {
     const [title, setTitle] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
     const [allDay, setAllDay] = useState(false);
     const dispatch = useDispatch();
 
+    useEffect(() => {
+        if (event) {
+            setTitle(event.title);
+            setStartDate(formatDateToInput(event.start));
+            setEndDate(formatDateToInput(event.end));
+            setAllDay(event.allDay);
+        } else {
+            setTitle('');
+            setStartDate('');
+            setEndDate('');
+            setAllDay(false);
+        }
+    }, [event]);
+
     const handleSubmit = (e) => {
         e.preventDefault();
-        // Create the event object
-        const event = {
-            id: Date.now(), // simple unique ID generation
+        const newEvent = {
+            id: event ? event.id : Date.now(),
             title,
             start: startDate,
             end: endDate,
             allDay
         };
 
-        // Dispatch the action to add the event
-        dispatch(addEvent(event));
+        if (event) {
+            dispatch(editEvent(newEvent));
+        } else {
+            dispatch(addEvent(newEvent));
+        }
 
-        // Reset the form
         setTitle('');
         setStartDate('');
         setEndDate('');
-        setAllDay(false)
+        setAllDay(false);
     };
 
     return (
