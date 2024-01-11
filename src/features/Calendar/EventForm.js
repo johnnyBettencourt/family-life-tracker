@@ -1,6 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addEvent, editEvent } from './calendarSlice';
+import { addEvent, editEvent, removeEvent } from './calendarSlice';
 
 function formatDateToInput(date) {
     const formattedDate = new Date(date);
@@ -12,7 +12,7 @@ function formatDateToInput(date) {
     return `${year}-${month}-${day}T${hours}:${minutes}`;
 }
 
-const EventForm = ({ event = null }) => {
+const EventForm = ({ event = null, clearSelectedEvent }) => {
     const [title, setTitle] = useState('');
     const [startDate, setStartDate] = useState('');
     const [endDate, setEndDate] = useState('');
@@ -45,6 +45,7 @@ const EventForm = ({ event = null }) => {
 
         if (event) {
             dispatch(editEvent(newEvent));
+            clearSelectedEvent();
         } else {
             dispatch(addEvent(newEvent));
         }
@@ -54,6 +55,11 @@ const EventForm = ({ event = null }) => {
         setEndDate('');
         setAllDay(false);
     };
+
+    const handleDelete = () => {
+        dispatch(removeEvent(event));
+        clearSelectedEvent();
+    }
 
     return (
         <div className="bg-white rounded-lg shadow-md p-4">
@@ -116,9 +122,19 @@ const EventForm = ({ event = null }) => {
                         type="submit"
                         className="px-4 py-2 bg-purple-500 hover:bg-purple-700 text-white rounded-lg shadow transition-colors duration-300"
                     >
-                        Add Event
+                        {event ? 'Update Event' : 'Add Event'}
                     </button>
+                    {event && (
+                    <button
+                    type="button"
+                    className="px-4 py-2 bg-red-500 hover:bg-purple-700 text-white rounded-lg shadow transition-colors duration-300 ml-5"
+                    onClick={handleDelete}
+                    >
+                        Delete Event
+                    </button>
+                )}
                 </div>
+                
             </form>
         </div>
     );

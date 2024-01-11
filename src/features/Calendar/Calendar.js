@@ -14,7 +14,7 @@ const Calendar = () => {
     const handleEventClick = (info) => {
         setSelectedEvent(info.event);
     };
-    const handleUnselect = () => {
+    const clearSelectedEvent = () => {
         setSelectedEvent(null);
     };
 
@@ -27,13 +27,12 @@ const Calendar = () => {
                         initialView='dayGridMonth'
                         events={events}
                         eventClick={handleEventClick}
-                        unselect={handleUnselect}
                     />
                 </div>
             </div>
             <div className='w-1/4 h-full m-1'>
                 <div className='mb-2'>
-                    <EventForm event={selectedEvent} />
+                    <EventForm event={selectedEvent} clearSelectedEvent ={clearSelectedEvent}/>
                 </div>
                 <div className='p-4 bg-white rounded-lg shadow'>
                     <FullCalendar

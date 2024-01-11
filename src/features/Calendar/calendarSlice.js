@@ -37,7 +37,6 @@ const initialState = {
             allDay: true
         }
     ],
-    // nextId: 6,
 };
 
 const calendarSlice = createSlice({
@@ -45,25 +44,20 @@ const calendarSlice = createSlice({
     initialState,
     reducers: {
         addEvent: (state, action) => {
-            const newId = state.nextId++;
-
-            // Create a new task object based on the action payload
-            const newEvent = {
-                ...action.payload,
-                id: newId,
-            };
-            state.events.push(newEvent);
-        },
-        removeEvent: (state, action) => {
-            state.events = state.events.filter(event => event.id !== action.payload.id);
+            state.events.push(action.payload);
         },
         editEvent: (state, action) => {
-            const event = state.events.find(event => event.id === action.payload.id);
-            if (event) {
-                Object.assign(event, action.payload);
+            const id = Number(action.payload.id);
+            const index = state.events.findIndex(event => event.id === id);
+            if (index !== -1) {
+                state.events[index] = action.payload;
             }
-        }
-    }
+        },
+        removeEvent: (state, action) => {
+            const id = Number(action.payload.id);
+            state.events = state.events.filter(event => event.id !== id);
+        },
+    },
 })
 
 export const selectEvents = (state) => state.calendar.events;
