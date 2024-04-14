@@ -5,35 +5,35 @@ const initialState = {
         {
             id: 0,
             title: 'Family Brunch',
-            start: '2023-12-01T10:30:00',
-            end: '2023-12-01T12:00:00',
+            start: '2024-04-01T10:30:00',
+            end: '2024-04-01T12:00:00',
             allDay: false
         },
         {
             id: 1,
             title: 'Doctor Appointment',
-            start: '2023-12-03',
+            start: '2024-04-03',
             allDay: true
         },
         {
             id: 2,
             title: 'School Play',
-            start: '2023-12-05T18:00:00',
-            end: '2023-12-05T20:00:00',
+            start: '2024-04-05T18:00:00',
+            end: '2024-04-05T20:00:00',
             allDay: false
         },
         {
             id: 3,
             title: 'Grocery Shopping',
-            start: '2023-12-07T09:00:00',
-            end: '2023-12-07T10:00:00',
+            start: '2024-04-07T09:00:00',
+            end: '2024-04-07T10:00:00',
             allDay: false
         },
         {
             id: 4,
             title: 'Weekend Getaway',
-            start: '2023-12-10',
-            end: '2023-12-12',
+            start: '2024-04-10',
+            end: '2024-04-12',
             allDay: true
         }
     ],
