@@ -30,10 +30,14 @@ const financesSlice= createSlice({
             state.expenses.unshift(newExpense);
         },
         deleteExpense: (state, action) => {
-            state.events = state.events.filter(event => event.id !== action.payload.id);
+            state.expenses = state.expenses.filter(expense => expense.id !== action.payload.id);
         },
     }
 })
 
-export const { invalidate } = financesSlice.actions
-export default financesSlice.reducer
+export const { updateBudget, addExpense, deleteExpense } = financesSlice.actions
+export const financesReducer = financesSlice.reducer;
+export const selectBudget = state => state.finances.budget;
+export const selectSpent = state => state.finances.spent;
+export const selectRemaining = state => state.finances.remaining;
+export const selectExpenses = state => state.finances.budget;
