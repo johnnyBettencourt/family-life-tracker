@@ -49,7 +49,7 @@ const LoginForm = () => {
         }
     };
 
-     return (
+    return (
         <>
             <div className={`transition-all ease-in-out duration-500 ${register || loginStatus || registerStatus ? 'max-h-screen' : 'max-h-72 overflow-hidden'}`}>
                 {register ? (
@@ -60,6 +60,9 @@ const LoginForm = () => {
                 ) : (
                     <>
                         <h2 className="text-3xl font-medium mb-4 text-gray-700">Log In</h2>
+                        <p className="text-gray-300">Temp Credentials:</p>
+                        <p className="text-gray-300">test</p>
+                        <p className="text-gray-300">test</p>
                         <form onSubmit={handleSubmit} className="space-y-4">
                             {loginStatus && (
                                 <p className="text-red-500 text-sm my-2">{loginStatus}</p>
