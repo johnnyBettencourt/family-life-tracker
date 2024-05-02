@@ -1,32 +1,32 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { addEvent } from './calendarSlice';
+import { addEvent } from './calendarSlice'; // Import the action creator for adding events
 
 const EventForm = () => {
-    const [title, setTitle] = useState('');
-    const [startDate, setStartDate] = useState('');
-    const [endDate, setEndDate] = useState('');
-    const [allDay, setAllDay] = useState(false);
-    const dispatch = useDispatch();
+    // State hooks for managing form inputs
+    const [title, setTitle] = useState(''); // State for the event's title
+    const [startDate, setStartDate] = useState(''); // State for the event's start date
+    const [endDate, setEndDate] = useState(''); // State for the event's end date
+    const [allDay, setAllDay] = useState(false); // State to toggle if the event is all day
+    const dispatch = useDispatch(); // Hook to dispatch actions
 
+    // Handler for form submission
     const handleSubmit = (e) => {
-        e.preventDefault();
-        // Create the event object
-        const event = {
+        e.preventDefault(); // Prevent default form submission behavior
+        const event = { // Create an event object from state
             title,
             start: startDate,
             end: endDate,
             allDay
         };
 
-        // Dispatch the action to add the event
-        dispatch(addEvent(event));
+        dispatch(addEvent(event)); // Dispatch the event to the Redux store
 
-        // Reset the form
+        // Reset form fields after submission
         setTitle('');
         setStartDate('');
         setEndDate('');
-        setAllDay(false)
+        setAllDay(false);
     };
 
     return (

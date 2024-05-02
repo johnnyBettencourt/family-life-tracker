@@ -1,48 +1,50 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch } from 'react-redux';
-import { addExpense } from './financesSlice';  // Make sure you have this action set up correctly
+import { addExpense } from './financesSlice';  // Importing the action to add an expense to the store
 
 const ExpenseForm = () => {
-    const dispatch = useDispatch();
+    const dispatch = useDispatch(); // Hook to dispatch actions to the Redux store
+    // State to handle form inputs with initial values
     const [formData, setFormData] = useState({
-        name: '',
-        cost: ''
+        name: '', // Input for the name of the expense
+        cost: ''  // Input for the cost of the expense, initialized as an empty string for UX
     });
 
+    // State to control the visibility of the form, initially hidden
     const [showForm, setShowForm] = useState(false);
 
+    // Effect to show the form shortly after component mounts, used for transition effects
     useEffect(() => {
-        // Delay showing the form with a transition
         const timer = setTimeout(() => {
-            setShowForm(true);
+            setShowForm(true); // Show the form after 10ms, can be used to apply transition effects
         }, 10);
-        // Clear the timer to avoid memory leaks
-        return () => clearTimeout(timer);
+        return () => clearTimeout(timer); // Cleanup to prevent memory leak if the component unmounts before the timer fires
     }, []);
 
+    // Handler for form input changes
     const handleInputChange = (e) => {
-        // Update the form data when input fields change
         const { name, value } = e.target;
+        // If the input name is 'cost', parse it as float for numerical calculations; else keep as string
         const newValue = name === 'cost' ? parseFloat(value) || 0 : value;
         setFormData({
-            ...formData,
-            [name]: newValue,
+            ...formData,    // Spread the existing form data
+            [name]: newValue, // Update the changed value dynamically using computed property names
         });
     };
 
+    // Handler for form submission
     const handleSubmit = (e) => {
-        e.preventDefault();
-        if (formData.name && formData.cost > 0) {
-            // Dispatch the addExpense action with the form data
-            dispatch(addExpense(formData));
-            // Clear the form data after submitting
-            setFormData({
+        e.preventDefault(); // Prevent the default form submission behavior
+        if (formData.name && formData.cost > 0) { // Ensure that the form data is valid
+            dispatch(addExpense(formData)); // Dispatch the addExpense action with the form data
+            setFormData({ // Reset the form data to initial state for new entries
                 name: '',
                 cost: ''
             });
         }
     };
 
+    // Component rendering the form
     return (
         <div className={`bg-purple-200 rounded-lg shadow-md p-4 transform duration-500 ${showForm ? 'scale-100' : 'scale-0'}`}>
             <h2 className="text-lg font-semibold mb-4 text-gray-700">Add New Expense</h2>

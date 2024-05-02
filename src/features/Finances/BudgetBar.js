@@ -1,30 +1,35 @@
 import React, { useState } from 'react';
 import { useDispatch } from 'react-redux';
-import { updateBudget } from './financesSlice'; // Ensure you have this action creator
+import { updateBudget } from './financesSlice'; // Import the action for updating the budget
 
 export default function BudgetBar({ budget, spent, remaining }) {
-    const [isEditing, setIsEditing] = useState(false);
-    const [editBudget, setEditBudget] = useState(budget);
-    const dispatch = useDispatch();
+    const [isEditing, setIsEditing] = useState(false); // State to track whether the edit mode is active
+    const [editBudget, setEditBudget] = useState(budget); // State for storing the editable budget value
+    const dispatch = useDispatch(); // Hook to dispatch actions
 
+    // Function to enable edit mode
     const handleEdit = () => {
         setIsEditing(true);
     };
 
+    // Function to cancel editing, reverting changes
     const handleCancel = () => {
         setIsEditing(false);
-        setEditBudget(budget);  // Reset to original budget if canceled
+        setEditBudget(budget); // Reset the edit budget to the original budget on cancel
     };
 
+    // Function to save the edited budget
     const handleSave = () => {
-        dispatch(updateBudget(Number(editBudget)));
-        setIsEditing(false);
+        dispatch(updateBudget(Number(editBudget))); // Dispatch the action to update the budget in the store
+        setIsEditing(false); // Exit edit mode after saving
     };
 
+    // Function to handle changes in the input field
     const handleChange = (event) => {
-        setEditBudget(event.target.value);
+        setEditBudget(event.target.value); // Update the editBudget state with new input
     };
 
+    // Rendering the component with conditionally displayed elements based on editing state
     return (
         <div className="bg-white rounded-lg shadow-lg p-4 mb-4 transition-all duration-500 ease-in-out border-2 border-gray-100 hover:shadow-xl">
             <h2 className="text-xl font-medium text-gray-800 mb-4">Budget Overview</h2>

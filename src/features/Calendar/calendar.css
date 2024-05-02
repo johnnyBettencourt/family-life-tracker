@@ -1,26 +1,24 @@
+/* Styles for calendar events */
 .fc-event {
-    background-color: #8B5CF6 !important;
-    color: white !important;
-    /* Replace with your app's secondary color */
+    background-color: #8B5CF6 !important; /* Purple background color for events */
+    color: white !important; /* White text for better readability */
+    border-radius: .5rem !important; /* Rounded corners for a softer, more modern look */
 }
 
+/* Styles for all buttons in the FullCalendar */
 .fc-button {
-    background-color: #8B5CF6 !important;
-    border-color: #8B5CF6 !important;
-    border-radius: .5rem !important;
-    margin: .1rem !important;
+    background-color: #8B5CF6 !important; /* Purple background color for buttons */
+    border-color: #8B5CF6 !important; /* Purple border color to match the background */
+    border-radius: .5rem !important; /* Rounded corners for buttons */
+    margin: .1rem !important; /* Slight margin around buttons for spacing */
 }
 
+/* Hover state styles for FullCalendar buttons */
 .fc-button:hover {
-    background-color: #6B21A8 !important;
+    background-color: #6B21A8 !important; /* Darker purple on hover for a visual feedback */
 }
 
-.fc-event {
-    border-radius: .5rem !important;
-    /* Rounded corners for events */
-    /* Add more styling as per your app's theme */
-}
-
+/* Highlighting the current day in the calendar */
 .fc-day-today {
-    background-color: #efe9ff !important;
+    background-color: #efe9ff !important; /* Light purple background for today's date to stand out */
 }
