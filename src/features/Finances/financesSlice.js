@@ -2,14 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 
 const initialState = {
     budget: 5000,
-    expenses: [
-        {
-            id: 0,
-            name: 'rent',
-            category: 'Other',
-            cost: 1600,
-        },
-    ],
+    expenses: [],
     nextId: 1
 }
 

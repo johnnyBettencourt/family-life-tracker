@@ -6,7 +6,7 @@ const ExpenseForm = () => {
     const dispatch = useDispatch();
     const [formData, setFormData] = useState({
         name: '',
-        cost: 0
+        cost: ''
     });
 
     const [showForm, setShowForm] = useState(false);
@@ -23,9 +23,10 @@ const ExpenseForm = () => {
     const handleInputChange = (e) => {
         // Update the form data when input fields change
         const { name, value } = e.target;
+        const newValue = name === 'cost' ? parseFloat(value) || 0 : value;
         setFormData({
             ...formData,
-            [name]: value,
+            [name]: newValue,
         });
     };
 
@@ -37,7 +38,7 @@ const ExpenseForm = () => {
             // Clear the form data after submitting
             setFormData({
                 name: '',
-                cost: 0
+                cost: ''
             });
         }
     };

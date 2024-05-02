@@ -4,6 +4,7 @@ import ExpenseForm from './ExpenseForm';
 import { useSelector } from 'react-redux';
 import { selectBudget, selectRemaining, selectSpent } from './financesSlice';
 import { BiPlus, BiX } from 'react-icons/bi';
+import ExpenseList from './ExpenseList';
 
 export default function Finances() {
     const budget = useSelector(selectBudget);
@@ -28,6 +29,7 @@ export default function Finances() {
                     </div>
                     
                     {showExpenseForm && <ExpenseForm />}
+                    <ExpenseList />
                 </div>
             </div>
         </div>
