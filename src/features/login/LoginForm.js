@@ -60,6 +60,8 @@ const LoginForm = () => {
                 ) : (
                     <>
                         <h2 className="text-3xl font-medium mb-4 text-gray-700">Log In</h2>
+                        <h4 className="text-l font-medium text-gray-300">Username: test</h4>
+                        <h4 className="text-l font-medium mb-4 text-gray-300">password: test</h4>
                         <form onSubmit={handleSubmit} className="space-y-4">
                             {loginStatus && (
                                 <p className="text-red-500 text-sm my-2">{loginStatus}</p>
