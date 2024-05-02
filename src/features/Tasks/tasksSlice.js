@@ -59,8 +59,8 @@ const tasksSlice = createSlice({
 
             // Create a new task object based on the action payload
             const newTask = {
-                ...action.payload,
                 id: newId,
+                ...action.payload
             };
 
             // Add the new task to the beginning of the tasks array
